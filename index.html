@@ -124,7 +124,7 @@
     function checkPalindrome() {
         // Foydalanuvchi kiritgan so'zni olish
         const wordInput = document.getElementById('wordInput');
-        const word = wordInput.value.trim();
+        const word = wordInput.value.toLowerCase().trim();
 
         if (!word) {
             document.getElementById('result').textContent = "Iltimos, so'zni kiriting!";
