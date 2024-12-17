@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Palindrome Checker</title>
+    <style>
+        /* Global Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f7fc;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        /* Container for form */
+        .container {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            width: 80%;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        input[type="text"]:focus {
+            border-color: #4169E1;
+            outline: none;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #4169E1;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #3760e0;
+        }
+
+        /* Result Styles */
+        p#result {
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+
+        .correct {
+            color: #28a745; /* Green for correct */
+        }
+
+        .incorrect {
+            color: #dc3545; /* Red for incorrect */
+        }
+
+        /* Responsive Design */
+        @media (max-width: 600px) {
+            .container {
+                width: 90%;
+                padding: 15px;
+            }
+
+            input[type="text"], button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<h1>Palindrome Tekshiruvchi</h1>
+<div class="container">
+    <input type="text" id="wordInput" placeholder="So'zni kiriting...">
+    <button onclick="checkPalindrome()">Tekshirish</button>
+    <p id="result"></p>
+</div>
+
+<script>
+    function checkPalindrome() {
+        // Foydalanuvchi kiritgan so'zni olish
+        const wordInput = document.getElementById('wordInput');
+        const word = wordInput.value.trim();
+
+        if (!word) {
+            document.getElementById('result').textContent = "Iltimos, so'zni kiriting!";
+            document.getElementById('result').className = '';
+            return;
+        }
+
+        // Palindrome bo'lib-bo'lmasligini tekshirish
+        const reversedWord = word.split('').reverse().join('');
+
+        const resultElement = document.getElementById('result');
+        if (word === reversedWord) {
+            resultElement.textContent = `"${word}" palindrom ✅!`;
+            resultElement.className = 'correct';
+        } else {
+            resultElement.textContent = `"${word}" palindrom emas. Teskarisi esa: "${reversedWord}"`;
+            resultElement.className = 'incorrect';
+        }
+
+        // Input maydonini tozalash
+        wordInput.value = '';
+    }
+</script>
+</body>
+</html>
