@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Palindrome Checker</title>
+    <!-- Font Awesome CDN for Instagram icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         /* Global Styles */
         body {
@@ -96,6 +98,25 @@
             color: #dc3545; /* Red for incorrect */
         }
 
+        /* Instagram Icon */
+        .instagram-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .instagram-icon {
+            font-size: 15px;
+            color: #333;
+            margin-right: 10px;
+        }
+
+        .instagram-text {
+            font-size: 15px;
+            color: #333;
+        }
+
         /* Responsive Design */
         @media (max-width: 600px) {
             .container {
@@ -118,13 +139,21 @@
     <input type="text" id="wordInput" placeholder="So'zni kiriting...">
     <button onclick="checkPalindrome()">Tekshirish</button>
     <p id="result"></p>
+
+    <!-- Instagram icon and text -->
+    <div class="instagram-container">
+        <a href="https://www.instagram.com/yourprofile" target="_blank">
+            <i class="fab fa-instagram instagram-icon"></i>
+        </a>
+        <span class="instagram-text">aytishn1k</span>
+    </div>
 </div>
 
 <script>
     function checkPalindrome() {
-        // Foydalanuvchi kiritgan so'zni olish
+        // Foydalanuvchi kiritgan so'zni olish va kichik harfga o'zgartirish
         const wordInput = document.getElementById('wordInput');
-        const word = wordInput.value.toLowerCase().trim();
+        const word = wordInput.value.trim().toLowerCase();  // Kichik harfga o'tkazish
 
         if (!word) {
             document.getElementById('result').textContent = "Iltimos, so'zni kiriting!";
@@ -137,10 +166,10 @@
 
         const resultElement = document.getElementById('result');
         if (word === reversedWord) {
-            resultElement.textContent = `"${word}" palindrom ✅!`;
+            resultElement.textContent = `"${wordInput.value}" palindrom ✅!`;
             resultElement.className = 'correct';
         } else {
-            resultElement.textContent = `"${word}" palindrom emas. Teskarisi esa: "${reversedWord}"`;
+            resultElement.textContent = `"${wordInput.value}" palindrom emas. Teskarisi esa: "${reversedWord}"`;
             resultElement.className = 'incorrect';
         }
 
